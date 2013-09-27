@@ -11,7 +11,7 @@ LIBS = `root-config --libs`
 rootcursor = rootcursor.h rootcursor.cpp
 
 librootcursor.so: $(rootcursor)
-	$(CPP) $(rootcursor) $(CPPFLAGS) -fPIC -shared -o $@
+	$(CPP) $(rootcursor) $(CPPFLAGS) $(LIBS) -fPIC -shared -o $@
 
 test_rootcursor: librootcursor.so test_rootcursor.c
 	$(CC) test_rootcursor.c -L. -lrootcursor $(LIBS) -o $@
